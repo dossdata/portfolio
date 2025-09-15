@@ -1,9 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaLinkedin, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
 import { contactData } from '../models/ContactModel';
+import { useContactController } from '../controllers';
 
 const Contact = () => {
+  const {
+    formData,
+    errors,
+    isSubmitting,
+    submitStatus,
+    handleInputChange,
+    handleSubmit
+  } = useContactController();
+
   return (
     <section id="contact" className="contact-section">
       <div className="container">
@@ -57,26 +67,80 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
+            onSubmit={handleSubmit}
           >
+            {/* Message de statut */}
+            {submitStatus && (
+              <div className={`status-message ${submitStatus.type}`}>
+                {submitStatus.type === 'success' ? (
+                  <FaCheckCircle className="status-icon" />
+                ) : (
+                  <FaExclamationCircle className="status-icon" />
+                )}
+                <span>{submitStatus.message}</span>
+              </div>
+            )}
+
             <div className="form-group">
-              <input type="text" placeholder="Votre nom" required />
+              <input 
+                type="text" 
+                name="name"
+                placeholder="Votre nom" 
+                value={formData.name}
+                onChange={handleInputChange}
+                className={errors.name ? 'error' : ''}
+                required 
+              />
+              {errors.name && <span className="error-message">{errors.name}</span>}
             </div>
+            
             <div className="form-group">
-              <input type="email" placeholder="Votre email" required />
+              <input 
+                type="email" 
+                name="email"
+                placeholder="Votre email" 
+                value={formData.email}
+                onChange={handleInputChange}
+                className={errors.email ? 'error' : ''}
+                required 
+              />
+              {errors.email && <span className="error-message">{errors.email}</span>}
             </div>
+            
             <div className="form-group">
-              <input type="text" placeholder="Sujet" required />
+              <input 
+                type="text" 
+                name="subject"
+                placeholder="Sujet" 
+                value={formData.subject}
+                onChange={handleInputChange}
+                className={errors.subject ? 'error' : ''}
+                required 
+              />
+              {errors.subject && <span className="error-message">{errors.subject}</span>}
             </div>
+            
             <div className="form-group">
-              <textarea placeholder="Votre message" rows="5" required></textarea>
+              <textarea 
+                name="message"
+                placeholder="Votre message" 
+                rows="5" 
+                value={formData.message}
+                onChange={handleInputChange}
+                className={errors.message ? 'error' : ''}
+                required
+              ></textarea>
+              {errors.message && <span className="error-message">{errors.message}</span>}
             </div>
+            
             <motion.button 
               type="submit"
               className="submit-btn"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              disabled={isSubmitting}
+              whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+              whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
             >
-              Envoyer
+              {isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
             </motion.button>
           </motion.form>
         </div>
