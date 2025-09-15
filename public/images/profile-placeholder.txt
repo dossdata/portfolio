@@ -1,0 +1,9 @@
+Instructions pour ajouter votre photo de profil :
+
+1. Remplacez ce fichier par votre image de profil
+2. Nommez le fichier "profile.jpg" ou "profile.png"
+3. Assurez-vous que l'image est de bonne qualité (recommandé : 400x400px minimum)
+4. L'image sera automatiquement intégrée dans le portfolio
+
+Formats supportés : JPG, PNG, WebP
+Taille recommandée : 400x400px à 800x800px
