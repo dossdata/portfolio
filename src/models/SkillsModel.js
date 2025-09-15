@@ -20,7 +20,6 @@ export const skillsData = [
   { name: 'C#', icon: FaCode },
   { name: '.NET', icon: FaCode },
   { name: 'Docker', icon: FaDocker },
-  { name: 'Kubernetes', icon: FaCubes },
   { name: 'CI/CD', icon: FaBolt },
   { name: 'Git', icon: FaGitAlt },
   { name: 'GitHub', icon: FaGithub },
