@@ -1,6 +1,6 @@
 export const profileData = {
   name: 'Hery Andriam',
-  title: 'Développeur Full Stack Node.js/Express - React.js, Angular & PHP/Symfony',
+  title: 'Développeur Full Stack Node.js/Express - React.js, Angular',
   subtitle: 'Ingénieur Full Stack chez Keobiz',
   description: 'Spécialisé dans l\'architecture microservices et le développement d\'applications web performantes avec Node.js, Angular, RabbitMQ, AWS, Datadog et LaunchDarkly',
   profileImage: '/images/profile.jpg',
